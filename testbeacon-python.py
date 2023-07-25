@@ -1,4 +1,4 @@
-#test push
+#test push test pull
 
 import os
 import linebot.v3.messaging
