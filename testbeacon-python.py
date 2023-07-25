@@ -27,8 +27,7 @@ import numpy as np
 
 
 app = Flask(__name__)
-# Defining the host is optional and defaults to https://api.line.me
-# See configuration.py for a list of all supported configuration parameters.
+
 configuration = linebot.v3.messaging.Configuration(
     host="https://api.line.me",
     access_token= "rPPYWtGcQfPtzw9ofrZfod1VgeqapWbDgMkXIKu38UgjnPtNHkMm5wbNVcDf/9klZ7PRZ8uJoh03XUSpTES9GxoSo1JL6kzo2p7OBhwEnX+25YJb+4ENLAma3VSNbnm43Uz3rtJRhAdTm3gv6sGnvQdB04t89/1O/w1cDnyilFU="
@@ -58,9 +57,8 @@ def event_handle(event):
     print("\n")
     whookevent = event
     
-    # Enter a context with an instance of the API client
     with linebot.v3.messaging.ApiClient(configuration) as api_client:
-        # Create an instance of the API class
+      
         api_instance = linebot.v3.messaging.MessagingApi(api_client)
         #user_id = 'U1fe4d1b000bf8216ebc2b6b33f15bc56'  # Replace this with the actual User ID you want to get the profile for
         try:
@@ -113,7 +111,7 @@ def event_handle(event):
             line_bot_api.reply_message(event['replyToken'], TextSendMessage(text=reply_msg))
             #line_bot_api.push_message(event['source']['userId'], TextSendMessage(text=f"สถานะข้อความ: {whookevent}"))
 
-            # ส่งข้อมูลโปรไฟล์กลับไปยังผู้ใช้งาน LINE OA (ตัวอย่าง)
+            
         try:
             display_name = api_response.display_name
             status_message = api_response.status_message
